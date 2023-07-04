@@ -9,14 +9,13 @@ int main(int argc, char **argv)
     tester.testNumberConversion();*/
 
     bool eFlag = true;
-    Outor::OutorTUI mainMenu = Outor::OutorTUI();
+    Outor::OutorTUI outorTUI = Outor::OutorTUI();
 
     while(eFlag)
     {
-        mainMenu.getMenu().outorClear();
-        mainMenu.get();
-        int value = mainMenu.getMenu().outorGetch();
-		mainMenu.getMenu().outorClear();
+        outorTUI.get();
+        int value = outorTUI.getMenu().outorGetch();
+		outorTUI.getMenu().outorClear();
 
         switch(value)
         {
@@ -25,13 +24,23 @@ int main(int argc, char **argv)
                     char value[3] = {0, 0, 0};
                     Outor::Outor outor = Outor::Outor();
 
-                    mainMenu.getMenu().outorPrintw("(Outor) Your current temperature? ");
-                    mainMenu.getMenu().outorGetstr(value);
+                    outorTUI.getMenu().outorPrintw("(Outor) Your current temperature? ");
+                    outorTUI.getMenu().outorGetstr(value);
 
                     outor.suggest(value);
 
-					mainMenu.getMenu().outorPrintw("(Outor) Press any key to continue...");
-					mainMenu.getMenu().outorGetch();
+                    outorTUI.getMenu().outorPrintw("(Outor) Press any key to continue...");
+                    outorTUI.getMenu().outorGetch();
+
+                    break;
+                }
+            case 'o':
+                {
+                    outorTUI.getMenu().outorPrintw("Outor by Leo `SapientLion` Markoff.\n");
+                    outorTUI.getMenu().outorPrintw("Version ");
+                    outorTUI.getMenu().outorPrintw(outorTUI.getVersion());
+                    outorTUI.getMenu().outorPrintw("\n\n(Outor) Press any key to continue...");
+                    outorTUI.getMenu().outorGetch();
 
                     break;
                 }
@@ -42,9 +51,11 @@ int main(int argc, char **argv)
                     break;
                 }
         }
+
+		outorTUI.getMenu().outorClear();
     }
 
-    mainMenu.getMenu().outorEndwin();
+    outorTUI.getMenu().outorEndwin();
 
     return 0;
 }

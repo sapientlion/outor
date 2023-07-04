@@ -17,7 +17,7 @@ namespace Outor
             {
                 SF_UNKNOWN, // The suggestion is unknown.
                 SF_WARM,    // Warm clothes.
-                SF_SOSO,    // Something in between; neighter warm or light clothes.
+                SF_SOSO,    // Something in between; neither warm or light clothes.
                 SF_LIGHT    // Light clothes.
             };
 

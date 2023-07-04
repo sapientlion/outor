@@ -13,6 +13,14 @@ namespace Outor
             int m_temperature = 0;
             TemperatureConverter m_tempConverter;
 
+            enum class SuggestionFlag
+            {
+                SF_UNKNOWN, // The suggestion is unknown.
+                SF_WARM,    // Warm clothes.
+                SF_SOSO,    // Something in between; neighter warm or light clothes.
+                SF_LIGHT    // Light clothes.
+            };
+
         public:
             /**
              * @brief Construct a new Outor object.

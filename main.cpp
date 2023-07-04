@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     {
         outorTUI.get();
         int value = outorTUI.getMenu().outorGetch();
-		outorTUI.getMenu().outorClear();
+        outorTUI.getMenu().outorClear();
 
         switch(value)
         {
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
                 }
         }
 
-		outorTUI.getMenu().outorClear();
+        outorTUI.getMenu().outorClear();
     }
 
     outorTUI.getMenu().outorEndwin();

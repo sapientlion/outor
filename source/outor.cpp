@@ -20,21 +20,21 @@ Outor::Outor::~Outor()
     return;
 }
 
-Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
+Outor::Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
 {
     double temperature = m_tempConverter.convert(value);
 
-	//
-	// No need to waste resources on redundant assignments.
-	//
-	if(m_temperature != temperature)
-	{
-		m_temperature = temperature;
-	}
+    //
+    // No need to waste resources on redundant assignments.
+    //
+    if(m_temperature != temperature)
+    {
+        m_temperature = temperature;
+    }
 
     TextUI textUI = TextUI();
 
-	textUI.outorClear();
+    textUI.outorClear();
 
     switch(m_temperature)
     {
@@ -59,7 +59,7 @@ Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
         default:
             {
                 textUI.outorPrintw("(Outor) Error! Temperature limit has been reached.\n\n");
-				textUI.outorRefresh();
+                textUI.outorRefresh();
 
                 return SuggestionFlag::SF_UNKNOWN;
             }

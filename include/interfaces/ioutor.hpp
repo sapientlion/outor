@@ -7,6 +7,15 @@ namespace Outor
 {
     class IOutor
     {
+        public:
+            enum class SuggestionFlag
+            {
+                SF_UNKNOWN, // The suggestion is unknown.
+                SF_WARM,    // Warm clothes.
+                SF_SOSO,    // Something in between; neither warm or light clothes.
+                SF_LIGHT    // Light clothes.
+            };
+
             /**
              * @brief Give advice to user on what to wear during specified weather conditions.
              *

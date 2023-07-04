@@ -22,7 +22,7 @@ int main(int argc, char **argv)
         {
             case 'a':
                 {
-                    char value[] = "";
+                    char value[3] = {0, 0, 0};
                     Outor::Outor outor = Outor::Outor();
 
                     mainMenu.getMenu().outorPrintw("(Outor) Your current temperature? ");

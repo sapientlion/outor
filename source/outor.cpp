@@ -24,10 +24,13 @@ Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
 {
     double temperature = m_tempConverter.convert(value);
 
-    if(m_temperature != *value)
-    {
-        m_temperature = *value;
-    }
+	//
+	// No need to waste resources on redundant assignments.
+	//
+	if(m_temperature != temperature)
+	{
+		m_temperature = temperature;
+	}
 
     TextUI textUI = TextUI();
 

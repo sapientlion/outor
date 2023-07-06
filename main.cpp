@@ -4,9 +4,11 @@
 
 int main(int argc, char **argv)
 {
-    /*Outor::OutorTester tester = Outor::OutorTester();
+#if OUTOR_UNIT_TESTING > 0
+    Outor::OutorTester tester = Outor::OutorTester();
 
-    tester.testNumberConversion();*/
+    tester.testNumberConversion();
+#else
 
     bool eFlag = true;
     Outor::OutorTUI outorTUI = Outor::OutorTUI();
@@ -56,6 +58,7 @@ int main(int argc, char **argv)
     }
 
     outorTUI.getMenu().outorEndwin();
+#endif
 
     return 0;
 }

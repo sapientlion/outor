@@ -24,18 +24,20 @@ namespace Outor
             ~OutorTUI();
 
             /**
-             * @brief 				Get all menu options na dprint them to the screen.
+             * @brief 				Get all possible menu options and print them to the screen.
              *
              * @return int
              */
             int get();
 			/**
-			 * @brief 				Get current program revision.
+			 * @brief 				Get current program revision number.
 			 *
 			 * @return outor_cchar	Current program revision as a character string.
 			 */
             outor_cchar getVersion();
             TextUI getMenu();
+
+			void run();
     };
 } // namespace Outor
 

@@ -76,7 +76,7 @@ if(OUTOR_BUILD_MAIN)
     build_main()
 endif()
 
-if(OUTOR_BUILD_UNIT)
+if(OUTOR_BUILD_UNIT_TESTER)
     build_unit_tester()
 endif()
 

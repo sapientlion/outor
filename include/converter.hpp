@@ -8,6 +8,28 @@ namespace Outor
     class Converter
     {
         private:
+            static bool isApplicable(outor_cchar value)
+            {
+                //
+                // Given value may be uninitialized.
+                //
+                if(value == nullptr)
+                {
+                    return false;
+                }
+
+                int length = getLength(value);
+
+                //
+                // Given value may be empty.
+                //
+                if(length <= 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
             /**
              * @brief 			Convert character string to integer literal.
              *
@@ -15,9 +37,49 @@ namespace Outor
              * @param value		Character string to convert.
              * @return double	Character string converted to integer literal.
              */
-            static double toDecimal(int length, outor_cchar value)
+            static double toDecimal(outor_cchar value)
+            // static double toDecimal(int length, outor_cchar value)
             {
-                int number = 0;
+                double number = 0.0;
+
+                if(!isApplicable(value))
+                {
+                    return number;
+                }
+
+                bool sFlag = isNegative(value[0]);
+                int cursorPosition = 0;
+                int length = getLength(value);
+
+                //
+                // Given value is a negative number.
+                //
+                if(sFlag)
+                {
+                    cursorPosition++;
+                }
+
+                for(cursorPosition; cursorPosition < length; cursorPosition++)
+                {
+                    number = (number + value[cursorPosition]) - 48;
+
+                    if(cursorPosition + 1 != length)
+                    {
+                        number *= 10;
+                    }
+                }
+
+                //
+                // Don't forget to make the number a negative one if that's the case.
+                //
+                if(sFlag)
+                {
+                    number *= (-1);
+                }
+
+                return number;
+
+                /*int number = 0;
 
                 if(value == nullptr)
                 {
@@ -52,7 +114,7 @@ namespace Outor
                     }
                 }
 
-                return number;
+                return number;*/
             }
 
             /**
@@ -63,9 +125,100 @@ namespace Outor
              * @param value				Character string to process.
              * @return double			Character string converted to double literal.
              */
-            static double toReal(int length, int rNumberLength, outor_cchar value, int floatPointPos)
+            static double toReal(outor_cchar value)
+            // static double toReal(int length, int rNumberLength, outor_cchar value, int floatPointPos)
             {
-                int lNumber = 0;
+                double number = 0.0;
+
+                if(!isApplicable(value))
+                {
+                    return number;
+                }
+
+                bool sFlag = isNegative(value[0]);
+                int cursorPosition = 0;
+                int length = getLength(value);
+
+                //
+                // Given value is a negative number.
+                //
+                if(sFlag)
+                {
+                    cursorPosition++;
+                }
+
+                int fPointPosition = 0;
+
+                //
+                // Find floating point position for future reference.
+                //
+                for(cursorPosition; cursorPosition < length; cursorPosition++)
+                {
+                    if(value[cursorPosition] == '.')
+                    {
+                        fPointPosition = cursorPosition;
+
+                        break;
+                    }
+                }
+
+                //
+                // Don't include the floating point in a total length of leftmost digits.
+                //
+                int leftmostLength = fPointPosition - 1;
+                int rightmostLength = length - fPointPosition;
+
+                if(!sFlag)
+                {
+                    cursorPosition = 0;
+                }
+                else
+                {
+                    cursorPosition = 1;
+                }
+
+                //
+                // Add leftmost digits first.
+                //
+                for(cursorPosition; cursorPosition < leftmostLength; cursorPosition++)
+                {
+                    number = (number + value[cursorPosition]) - 48;
+
+                    if(cursorPosition + 1 != length)
+                    {
+                        number *= 10;
+                    }
+                }
+
+                double rightmostDigits = 0.0;
+                cursorPosition = rightmostLength;
+
+                //
+                // Add rightmost digits after.
+                //
+                for(cursorPosition; cursorPosition > fPointPosition; cursorPosition--)
+                {
+                    rightmostDigits = (rightmostDigits + value[cursorPosition]) - 48;
+
+                    if(cursorPosition - 1 != cursorPosition)
+                    {
+                        number /= 10;
+                    }
+                }
+
+                number += rightmostDigits;
+
+                //
+                // Don't forget to make the number a negative one if that's the case.
+                //
+                if(sFlag)
+                {
+                    number *= (-1);
+                }
+
+                return number;
+
+                /*int lNumber = 0;
                 double rNumber = 0.0;
 
                 if(value == nullptr)
@@ -117,7 +270,7 @@ namespace Outor
                     rNumber = (rNumber + value[cursorPos]) - 48;
                 }
 
-                return lNumber + rNumber;
+                return lNumber + rNumber;*/
             }
 
         public:
@@ -136,6 +289,9 @@ namespace Outor
              * @return false	Return FALSE when a given character string is either not a real number or the variable
              * was left uninitialized.
              */
+
+            static bool isNegative(char sign);
+            static bool isPositive(char sign);
             static bool isReal(outor_cchar value);
             /**
              * @brief 			Convert given character string.

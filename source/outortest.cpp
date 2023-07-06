@@ -4,13 +4,12 @@
 void Outor::OutorTester::testNumberConversion()
 {
     outor_cchar value = "-11";
-	TemperatureConverter converter = TemperatureConverter();
 
     //
     // Negative decimal number.
     //
     double x = -11;
-    double y = converter.convert(value);
+    double y = Converter::convert(value);
     bool result = assertEquals(x, y);
 
     //
@@ -18,7 +17,7 @@ void Outor::OutorTester::testNumberConversion()
     //
     value = "11";
     x = 11;
-    y = converter.convert(value);
+    y = Converter::convert(value);
     result = assertEquals(x, y);
 
     //
@@ -26,7 +25,7 @@ void Outor::OutorTester::testNumberConversion()
     //
     value = "-11.123";
     x = -11.123;
-    y = converter.convert(value);
+    y = Converter::convert(value);
     result = assertEquals(x, y);
 
     //
@@ -34,6 +33,6 @@ void Outor::OutorTester::testNumberConversion()
     //
     value = "11.123";
     x = 11.123;
-    y = converter.convert(value);
+    y = Converter::convert(value);
     result = assertEquals(x, y);
 };

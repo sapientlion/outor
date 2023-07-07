@@ -6,42 +6,42 @@
 
 namespace Outor
 {
-    class TemperatureConverter : public Converter
+    class TempConverter
     {
         public:
-            enum class TemperatureUnit
+            enum class TempUnit
             {
                 TM_CELSIUS,
                 TM_FAHRENHEIT
             };
 
-			/**
-			 * @brief 					Construct a new Temperature Converter object
-			 *
-			 */
-            TemperatureConverter();
-			/**
-			 * @brief 					Destroy the Temperature Converter object
-			 *
-			 */
-            ~TemperatureConverter();
+            /**
+             * @brief 			Construct a new Temperature Converter object
+             *
+             */
+            TempConverter();
+            /**
+             * @brief 			Destroy the Temperature Converter object
+             *
+             */
+            ~TempConverter();
 
             /**
-             * @brief 					Convert given temperature to degrees Celsius.
+             * @brief 			Convert given value to degrees Celsius.
              *
-             * @param value				Temperature to process.
-             * @param tempMeasurement	Temperature unit to use for conversion.
-             * @return double			Result.
+             * @param value		A value to convert.
+             * @param unit		Temperature unit to convert given value from.
+             * @return double	Temperature in degrees Celsius.
              */
-            static double celsius(outor_cchar value, TemperatureUnit tempMeasurement = TemperatureUnit::TM_FAHRENHEIT);
+            static double toCelsius(outor_cchar value, TempUnit unit);
             /**
-             * @brief 					Convert given temperature to degrees Fahrenheit.
+             * @brief			Convert given value to degrees Fahrenheit.
              *
-             * @param value				Temperature to process.
-             * @param tempMeasurement	Temperature unit to use for conversion.
-             * @return double			Result.
+             * @param value		A value to convert.
+             * @param unit		Temperature unit to convert given value from.
+             * @return double   Temperature in degrees Fahrenheit.
              */
-            static double fahrenheit(outor_cchar value, TemperatureUnit tempMeasurement = TemperatureUnit::TM_CELSIUS);
+            static double toFahrenheit(outor_cchar value, TempUnit unit);
     };
 } // namespace Outor
 

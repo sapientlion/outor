@@ -9,6 +9,7 @@ namespace Outor
     {
         public:
             void testNumberConversion();
+            void testTemperatureConversion();
     };
 } // namespace Outor
 

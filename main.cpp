@@ -9,6 +9,7 @@ int main(int argc, char **argv)
     Outor::OutorTester tester = Outor::OutorTester();
 
     tester.testNumberConversion();
+    tester.testTemperatureConversion();
 
 #else
 

@@ -1,24 +1,24 @@
 #include "../include/tempcon.hpp"
 
-Outor::TemperatureConverter::TemperatureConverter()
+Outor::TempConverter::TempConverter()
 {
     return;
 }
 
-Outor::TemperatureConverter::~TemperatureConverter()
+Outor::TempConverter::~TempConverter()
 {
     return;
 }
 
-double Outor::TemperatureConverter::celsius(outor_cchar value, TemperatureUnit tempMeasurement)
+double Outor::TempConverter::toCelsius(outor_cchar value, TempUnit unit)
 {
-    double temperature = convert(value);
+    double temperature = Converter::convert(value);
 
-    switch(tempMeasurement)
+    switch(unit)
     {
-        case TemperatureUnit::TM_FAHRENHEIT:
+        case TempUnit::TM_FAHRENHEIT:
             {
-                return temperature = fahrenheit(value, TemperatureUnit::TM_CELSIUS);
+                return temperature = (temperature - 32) * 5 / 9;
             }
         default:
             {
@@ -27,15 +27,15 @@ double Outor::TemperatureConverter::celsius(outor_cchar value, TemperatureUnit t
     }
 }
 
-double Outor::TemperatureConverter::fahrenheit(outor_cchar value, TemperatureUnit tempMeasurement)
+double Outor::TempConverter::toFahrenheit(outor_cchar value, TempUnit unit)
 {
-    double temperature = convert(value);
+    double temperature = Converter::convert(value);
 
-    switch(tempMeasurement)
+    switch(unit)
     {
-        case TemperatureUnit::TM_CELSIUS:
+        case TempUnit::TM_CELSIUS:
             {
-                return temperature = celsius(value, TemperatureUnit::TM_FAHRENHEIT);
+                return temperature = (temperature * 9 / 5) + 32;
             }
         default:
             {

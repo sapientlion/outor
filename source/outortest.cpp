@@ -1,5 +1,6 @@
 #include "../include/outortest.hpp"
 #include "../include/outor.hpp"
+#include "../include/tempcon.hpp"
 #include "../include/tester.hpp"
 
 void Outor::OutorTester::testNumberConversion()
@@ -65,4 +66,28 @@ void Outor::OutorTester::testNumberConversion()
     x = 3.1415926535897932384626433;
     y = Converter::convert(value);
     result = Tester::assertEquals(x, y);
-};
+}
+
+void Outor::OutorTester::testTemperatureConversion()
+{
+    bool result;
+    double x;
+    double y;
+    outor_cchar value;
+
+    //
+    // Celsius to Fahrenheit.
+    //
+    value = "11";
+    x = 51.8;
+    y = TempConverter::toFahrenheit(value, TempConverter::TempUnit::TM_CELSIUS);
+    result = Tester::assertEquals(x, y);
+
+    //
+    // Fahrenheit to Celsius.
+    //
+    value = "51.8";
+    x = 11;
+    y = TempConverter::toCelsius(value, TempConverter::TempUnit::TM_FAHRENHEIT);
+    result = Tester::assertEquals(x, y);
+}

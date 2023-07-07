@@ -11,7 +11,7 @@ namespace Outor
     {
         private:
             int m_temperature = 0;
-            TemperatureConverter m_tempConverter;
+            TempConverter m_tempConverter;
 
         public:
             /**

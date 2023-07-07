@@ -14,6 +14,7 @@ include_directories(${CURSES_INCLUDE_DIR})
 function(build_main)
     add_executable(${CMAKE_MAIN_BINARY_NAME}
         ${CMAKE_ROOT_DIR}/include/interfaces/ioutor.hpp
+		${CMAKE_ROOT_DIR}/include/interfaces/ioutortui.hpp
         ${CMAKE_ROOT_DIR}/include/interfaces/itui.hpp
         ${CMAKE_ROOT_DIR}/include/converter.hpp
         ${CMAKE_ROOT_DIR}/include/global.hpp

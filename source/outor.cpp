@@ -3,7 +3,7 @@
 
 Outor::Outor::Outor()
 {
-    m_tempConverter = TemperatureConverter();
+    m_tempConverter = TempConverter();
 
     return;
 }
@@ -22,7 +22,7 @@ Outor::Outor::~Outor()
 
 Outor::Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
 {
-    double temperature = m_tempConverter.convert(value);
+    double temperature = Converter::convert(value);
 
     //
     // No need to waste resources on redundant assignments.

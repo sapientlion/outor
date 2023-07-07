@@ -38,7 +38,6 @@ namespace Outor
              * @return double	Character string converted to integer literal.
              */
             static double toDecimal(outor_cchar value)
-            // static double toDecimal(int length, outor_cchar value)
             {
                 double number = 0.0;
 
@@ -78,43 +77,6 @@ namespace Outor
                 }
 
                 return number;
-
-                /*int number = 0;
-
-                if(value == nullptr)
-                {
-                    return number;
-                }
-
-                int cursorPos = 0;
-
-                if(value[cursorPos] == '-')
-                {
-                    cursorPos++;
-                }
-
-                //
-                // In case of a single-digit number.
-                //
-                if(length < 1)
-                {
-                    number += value[cursorPos] - 48;
-                }
-
-                if(length >= 1)
-                {
-                    for(cursorPos; cursorPos < length; cursorPos++)
-                    {
-                        number = (number + value[cursorPos]) - 48;
-
-                        if(cursorPos + 1 != length)
-                        {
-                            number *= 10;
-                        }
-                    }
-                }
-
-                return number;*/
             }
 
             /**
@@ -126,7 +88,6 @@ namespace Outor
              * @return double			Character string converted to double literal.
              */
             static double toReal(outor_cchar value)
-            // static double toReal(int length, int rNumberLength, outor_cchar value, int floatPointPos)
             {
                 double number = 0.0;
 
@@ -163,9 +124,8 @@ namespace Outor
                 }
 
                 //
-                // Don't include the floating point in a total length of leftmost digits.
+                // Number of digits located after the floating point.
                 //
-                int leftmostLength = fPointPosition - 1;
                 int rightmostLength = length - fPointPosition;
 
                 if(!sFlag)
@@ -180,29 +140,32 @@ namespace Outor
                 //
                 // Add leftmost digits first.
                 //
-                for(cursorPosition; cursorPosition < leftmostLength; cursorPosition++)
+                for(cursorPosition; cursorPosition < fPointPosition; cursorPosition++)
                 {
                     number = (number + value[cursorPosition]) - 48;
 
-                    if(cursorPosition + 1 != length)
+                    if(cursorPosition + 1 != fPointPosition)
                     {
                         number *= 10;
                     }
                 }
 
                 double rightmostDigits = 0.0;
-                cursorPosition = rightmostLength;
+                //
+                // The first character is assumed to be located at index[0]. Reset the counter and place it there.
+                //
+                cursorPosition = length - 1;
 
                 //
-                // Add rightmost digits after.
+                // Add rightmost digits.
                 //
                 for(cursorPosition; cursorPosition > fPointPosition; cursorPosition--)
                 {
                     rightmostDigits = (rightmostDigits + value[cursorPosition]) - 48;
 
-                    if(cursorPosition - 1 != cursorPosition)
+                    if(cursorPosition - 1 != fPointPosition - 1)
                     {
-                        number /= 10;
+                        rightmostDigits /= 10;
                     }
                 }
 
@@ -217,60 +180,6 @@ namespace Outor
                 }
 
                 return number;
-
-                /*int lNumber = 0;
-                double rNumber = 0.0;
-
-                if(value == nullptr)
-                {
-                    return rNumber;
-                }
-
-                int cursorPos = 0;
-
-                if(value[cursorPos] == '-')
-                {
-                    cursorPos++;
-                }
-
-                if(floatPointPos < 2)
-                {
-                    lNumber += value[cursorPos] - 48;
-                }
-
-                //
-                // Process leftmost digits.
-                //
-                if(floatPointPos >= 2)
-                {
-                    for(cursorPos; cursorPos < floatPointPos; cursorPos++)
-                    {
-                        lNumber = (lNumber + value[cursorPos]) - 48;
-
-                        if(cursorPos + 1 != floatPointPos)
-                        {
-                            lNumber *= 10;
-                        }
-                    }
-                }
-
-                //
-                // Process rightmost digits.
-                //
-                if(rNumberLength > 1)
-                {
-                    for(cursorPos = length - 1; cursorPos >= rNumberLength; cursorPos--)
-                    {
-                        rNumber = (rNumber + value[cursorPos]) - 48;
-                        rNumber /= 10;
-                    }
-                }
-                else
-                {
-                    rNumber = (rNumber + value[cursorPos]) - 48;
-                }
-
-                return lNumber + rNumber;*/
             }
 
         public:

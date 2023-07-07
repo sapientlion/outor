@@ -5,7 +5,7 @@
 
 namespace Outor
 {
-    class OutorTester : public Tester
+    class OutorTester
     {
         public:
             void testNumberConversion();

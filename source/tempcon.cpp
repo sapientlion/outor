@@ -10,15 +10,15 @@ Outor::TemperatureConverter::~TemperatureConverter()
     return;
 }
 
-double Outor::TemperatureConverter::celsius(outor_cchar value, TempMeasurement tempMeasurement)
+double Outor::TemperatureConverter::celsius(outor_cchar value, TemperatureUnit tempMeasurement)
 {
     double temperature = convert(value);
 
     switch(tempMeasurement)
     {
-        case TempMeasurement::TM_FAHRENHEIT:
+        case TemperatureUnit::TM_FAHRENHEIT:
             {
-                return temperature = fahrenheit(value, TempMeasurement::TM_CELSIUS);
+                return temperature = fahrenheit(value, TemperatureUnit::TM_CELSIUS);
             }
         default:
             {
@@ -27,15 +27,15 @@ double Outor::TemperatureConverter::celsius(outor_cchar value, TempMeasurement t
     }
 }
 
-double Outor::TemperatureConverter::fahrenheit(outor_cchar value, TempMeasurement tempMeasurement)
+double Outor::TemperatureConverter::fahrenheit(outor_cchar value, TemperatureUnit tempMeasurement)
 {
     double temperature = convert(value);
 
     switch(tempMeasurement)
     {
-        case TempMeasurement::TM_CELSIUS:
+        case TemperatureUnit::TM_CELSIUS:
             {
-                return temperature = celsius(value, TempMeasurement::TM_FAHRENHEIT);
+                return temperature = celsius(value, TemperatureUnit::TM_FAHRENHEIT);
             }
         default:
             {

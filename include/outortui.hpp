@@ -1,11 +1,12 @@
 #ifndef OUTORTUI_HPP
 #define OUTORTUI_HPP
 
+#include "interfaces/ioutortui.hpp"
 #include "tui.hpp"
 
 namespace Outor
 {
-    class OutorTUI
+    class OutorTUI : public IOutorTUI
     {
         private:
             outor_cchar m_options[OUTOR_OPTIONS_NUMBER] = {"Get (A)dvice\n ", "Ab(o)ut\n", "(Q)uit Program\n"};
@@ -29,15 +30,15 @@ namespace Outor
              * @return int
              */
             int get();
-			/**
-			 * @brief 				Get current program revision number.
-			 *
-			 * @return outor_cchar	Current program revision as a character string.
-			 */
+            /**
+             * @brief 				Get current program revision number.
+             *
+             * @return outor_cchar	Current program revision as a character string.
+             */
             outor_cchar getVersion();
             TextUI getMenu();
 
-			void run();
+            void run();
     };
 } // namespace Outor
 

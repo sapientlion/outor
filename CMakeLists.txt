@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18.4)
-project(outor)
+project(Outor)
 
 set(CMAKE_ROOT_DIR .)
 set(CMAKE_MAIN_BINARY_NAME outor)
@@ -14,9 +14,6 @@ option(OUTOR_BUILD_LEGACY "Build legacy target" false)
 # Build the main target.
 #
 function(build_main)
-	find_package(Curses REQUIRED)
-	include_directories(${CURSES_INCLUDE_DIR})
-
     add_executable(${CMAKE_MAIN_BINARY_NAME}
         ${CMAKE_ROOT_DIR}/include/interfaces/ioutor.hpp
 		${CMAKE_ROOT_DIR}/include/interfaces/ioutortui.hpp
@@ -46,8 +43,6 @@ endfunction()
 # Build the unit tester target.
 #
 function(build_unit_tester)
-	find_package(Curses REQUIRED)
-	include_directories(${CURSES_INCLUDE_DIR})
     add_compile_definitions(OUTOR_UNIT_TESTING=1)
 
     add_executable(${CMAKE_UNIT_TESTER_BINARY_NAME}
@@ -98,6 +93,11 @@ if(NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
     "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel."
     FORCE)
+endif()
+
+if(OUTOR_BUILD_MAIN OR OUTOR_BUILD_UNIT_TESTER)
+    find_package(Curses REQUIRED)
+    include_directories(${CURSES_INCLUDE_DIR})
 endif()
 
 if(OUTOR_BUILD_MAIN)

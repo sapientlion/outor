@@ -26,6 +26,14 @@ namespace Outor
              */
             ~TempConverter();
 
+			/**
+			 * @brief 			Convert given value to degrees Celsius.
+			 *
+			 * @param value		A double literal to convert.
+			 * @param unit		Temperature unit to convert given value from.
+			 * @return double	Temperature in degrees Celsius.
+			 */
+			static double toCelsius(double value, TempUnit unit);
             /**
              * @brief 			Convert given value to degrees Celsius.
              *
@@ -34,6 +42,14 @@ namespace Outor
              * @return double	Temperature in degrees Celsius.
              */
             static double toCelsius(outor_cchar value, TempUnit unit);
+			/**
+			 * @brief
+			 *
+			 * @param value		A double literal to convert.
+			 * @param unit		Temperature unit to convert given value from.
+			 * @return double	Temperature in degrees Fahrenheit.
+			 */
+			static double toFahrenheit(double value, TempUnit unit);
             /**
              * @brief			Convert given value to degrees Fahrenheit.
              *

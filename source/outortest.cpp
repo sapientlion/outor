@@ -73,21 +73,38 @@ void Outor::OutorTester::testTemperatureConversion()
     bool result;
     double x;
     double y;
-    outor_cchar value;
+	double valueFloat;
+    outor_cchar valueString;
 
     //
-    // Celsius to Fahrenheit.
+    // Celsius to Fahrenheit (using real numbers).
     //
-    value = "11";
+    valueFloat = 11;
     x = 51.8;
-    y = TempConverter::toFahrenheit(value, TempConverter::TempUnit::TM_CELSIUS);
+    y = TempConverter::toFahrenheit(valueString, TempConverter::TempUnit::TM_CELSIUS);
     result = Tester::assertEquals(x, y);
 
     //
-    // Fahrenheit to Celsius.
+    // Fahrenheit to Celsius (using real numbers).
     //
-    value = "51.8";
+    valueFloat = 51.8;
     x = 11;
-    y = TempConverter::toCelsius(value, TempConverter::TempUnit::TM_FAHRENHEIT);
+    y = TempConverter::toCelsius(valueString, TempConverter::TempUnit::TM_FAHRENHEIT);
+    result = Tester::assertEquals(x, y);
+
+    //
+    // Celsius to Fahrenheit (using character strings).
+    //
+    valueString = "11";
+    x = 51.8;
+    y = TempConverter::toFahrenheit(valueString, TempConverter::TempUnit::TM_CELSIUS);
+    result = Tester::assertEquals(x, y);
+
+    //
+    // Fahrenheit to Celsius (using character strings).
+    //
+    valueString = "51.8";
+    x = 11;
+    y = TempConverter::toCelsius(valueString, TempConverter::TempUnit::TM_FAHRENHEIT);
     result = Tester::assertEquals(x, y);
 }

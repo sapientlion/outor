@@ -33,7 +33,7 @@ function(build_main)
         ${CMAKE_ROOT_DIR}/source/outortui.cpp
         ${CMAKE_ROOT_DIR}/source/tempcon.cpp
         ${CMAKE_ROOT_DIR}/source/tui.cpp
-        ${CMAKE_ROOT_DIR}/main.cpp
+        ${CMAKE_ROOT_DIR}/source/main.cpp
 )
 
     target_link_libraries(${CMAKE_MAIN_BINARY_NAME} ${CURSES_LIBRARIES})
@@ -63,7 +63,7 @@ function(build_unit_tester)
         ${CMAKE_ROOT_DIR}/source/outortui.cpp
         ${CMAKE_ROOT_DIR}/source/tempcon.cpp
         ${CMAKE_ROOT_DIR}/source/tui.cpp
-        ${CMAKE_ROOT_DIR}/main.cpp
+        ${CMAKE_ROOT_DIR}/source/main.cpp
         )
 
     target_link_libraries(${CMAKE_UNIT_TESTER_BINARY_NAME} ${CURSES_LIBRARIES})

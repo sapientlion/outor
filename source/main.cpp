@@ -1,6 +1,6 @@
-#include "include/outor.hpp"
-#include "include/outortest.hpp"
-#include "include/outortui.hpp"
+#include "../include/outor.hpp"
+#include "../include/outortest.hpp"
+#include "../include/outortui.hpp"
 
 int main(int argc, char **argv)
 {

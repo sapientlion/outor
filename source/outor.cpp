@@ -3,7 +3,7 @@
 
 Outor::Outor::Outor()
 {
-    m_tempConverter = TempConverter();
+    tempConverter = TempConverter();
 
     return;
 }
@@ -27,16 +27,16 @@ Outor::Outor::SuggestionFlag Outor::Outor::suggest(outor_cchar value)
     //
     // No need to waste resources on redundant assignments.
     //
-    if(m_temperature != temperature)
+    if(Outor::Outor::temperature != temperature)
     {
-        m_temperature = temperature;
+        Outor::Outor::temperature = temperature;
     }
 
     TextUI textUI = TextUI();
 
     textUI.outorClear();
 
-    switch(m_temperature)
+    switch(Outor::Outor::temperature)
     {
         case 15 ... 50:
             {

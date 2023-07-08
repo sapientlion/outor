@@ -9,8 +9,8 @@ namespace Outor
     class OutorTUI : public IOutorTUI
     {
         private:
-            outor_cchar m_options[OUTOR_OPTIONS_NUMBER] = {"Get (A)dvice\n ", "Ab(o)ut\n", "(Q)uit Program\n"};
-            TextUI m_menu;
+            outor_cchar options[OUTOR_OPTIONS_NUMBER] = {"Get (A)dvice\n ", "Ab(o)ut\n", "(Q)uit Program\n"};
+            TextUI menu;
 
         public:
             /**

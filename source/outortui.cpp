@@ -3,22 +3,22 @@
 
 Outor::OutorTUI::OutorTUI()
 {
-    m_menu = TextUI();
+    menu = TextUI();
 }
 
 Outor::OutorTUI::~OutorTUI()
 {
-    m_menu.outorEndwin();
+    menu.outorEndwin();
 }
 
 int Outor::OutorTUI::get()
 {
     for(int index = 0; index < OUTOR_OPTIONS_NUMBER; index++)
     {
-        m_menu.outorPrintw(m_options[index]);
+        menu.outorPrintw(options[index]);
     }
 
-    return m_menu.outorRefresh();
+    return menu.outorRefresh();
 }
 
 outor_cchar Outor::OutorTUI::getVersion()
@@ -28,7 +28,7 @@ outor_cchar Outor::OutorTUI::getVersion()
 
 Outor::TextUI Outor::OutorTUI::getMenu()
 {
-    return m_menu;
+    return menu;
 }
 
 void Outor::OutorTUI::run()

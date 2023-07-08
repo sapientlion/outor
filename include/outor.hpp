@@ -10,8 +10,8 @@ namespace Outor
     class Outor : public IOutor
     {
         private:
-            int m_temperature = 0;
-            TempConverter m_tempConverter;
+            int temperature = 0;
+            TempConverter tempConverter;
 
         public:
             /**

@@ -4,14 +4,19 @@ project(outor)
 set(CMAKE_ROOT_DIR .)
 set(CMAKE_MAIN_BINARY_NAME outor)
 set(CMAKE_UNIT_TESTER_BINARY_NAME outor_unit)
+set(CMAKE_LEGACY_BINARY_NAME advisor)
 
 option(OUTOR_BUILD_MAIN "Build main target" true)
 option(OUTOR_BUILD_UNIT_TESTER "Build unit tester target" false)
+option(OUTOR_BUILD_LEGACY "Build legacy target" false)
 
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
-
+#
+# Build the main target.
+#
 function(build_main)
+	find_package(Curses REQUIRED)
+	include_directories(${CURSES_INCLUDE_DIR})
+
     add_executable(${CMAKE_MAIN_BINARY_NAME}
         ${CMAKE_ROOT_DIR}/include/interfaces/ioutor.hpp
 		${CMAKE_ROOT_DIR}/include/interfaces/ioutortui.hpp
@@ -37,8 +42,14 @@ function(build_main)
     target_link_libraries(${CMAKE_MAIN_BINARY_NAME} ${CURSES_LIBRARIES})
 endfunction()
 
+#
+# Build the unit tester target.
+#
 function(build_unit_tester)
-add_compile_definitions(OUTOR_UNIT_TESTING=1)
+	find_package(Curses REQUIRED)
+	include_directories(${CURSES_INCLUDE_DIR})
+    add_compile_definitions(OUTOR_UNIT_TESTING=1)
+
     add_executable(${CMAKE_UNIT_TESTER_BINARY_NAME}
         ${CMAKE_ROOT_DIR}/include/interfaces/ioutor.hpp
         ${CMAKE_ROOT_DIR}/include/interfaces/itui.hpp
@@ -63,6 +74,22 @@ add_compile_definitions(OUTOR_UNIT_TESTING=1)
     target_link_libraries(${CMAKE_UNIT_TESTER_BINARY_NAME} ${CURSES_LIBRARIES})
 endfunction()
 
+#
+# Build the legacy target.
+#
+function(build_legacy)
+    add_executable(${CMAKE_LEGACY_BINARY_NAME}
+        ${CMAKE_ROOT_DIR}/legacy/include/global.h
+        ${CMAKE_ROOT_DIR}/legacy/include/outor.h
+
+	    ${CMAKE_ROOT_DIR}/legacy/source/main.c
+        ${CMAKE_ROOT_DIR}/legacy/source/outor.c
+	)
+endfunction()
+
+#
+# Default build type.
+#
 if(NOT CMAKE_CONFIGURATION_TYPES)
     if(NOT CMAKE_BUILD_TYPE)
         set(CMAKE_BUILD_TYPE RelWithDebInfo)
@@ -81,4 +108,6 @@ if(OUTOR_BUILD_UNIT_TESTER)
     build_unit_tester()
 endif()
 
-
+if(OUTOR_BUILD_LEGACY)
+    build_legacy()
+endif()

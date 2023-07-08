@@ -13,12 +13,20 @@ Outor::OutorTUI::~OutorTUI()
 
 int Outor::OutorTUI::get()
 {
+    menu.outorPrintw(getTitle());
+	menu.outorPrintw("\n\n");
+
     for(int index = 0; index < OUTOR_OPTIONS_NUMBER; index++)
     {
         menu.outorPrintw(options[index]);
     }
 
     return menu.outorRefresh();
+}
+
+outor_cchar Outor::OutorTUI::getTitle()
+{
+    return OUTOR_TITLE_NAME;
 }
 
 outor_cchar Outor::OutorTUI::getVersion()

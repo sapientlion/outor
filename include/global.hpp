@@ -5,6 +5,7 @@
 #include <ncurses.h>
 
 #define OUTOR_OPTIONS_NUMBER 3
+#define OUTOR_TITLE_NAME "Outor"
 #define OUTOR_VERSION_MAJOR "0"
 #define OUTOR_VERSION_MINOR "1"
 #define OUTOR_VERSION_PATCH "0"

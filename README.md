@@ -1,0 +1,47 @@
+#Outor
+
+##What is Outor?
+
+Outor is a terminal-based ultimate outfit advisor and temperature converter made for fun. It's intended to be
+used in situations where advise is needed on what to wear during specific weather conditions.
+
+##How to use it?
+
+To use this program, proceed to the following platform-specific instructions:
+
+* GNU/Linux: invoke a terminal or a terminal emulator and navigate your way to the executable. When in the same
+directory as the executable, check out whether it's marked as an executable program. To run it, execute the
+following command: `./Outor-<version>-<platform>.AppImage`. Then, press any key which corresponds to one of the
+main menu options (look at the leading letters for a hint). Follow the instructions given on the screen;
+* Windows: double-click on the executable and wait for the command prompt to appear on the screen. Then, press
+any key which corresponds to one of the main menu options (look at the leading letters for a hint). Follow the
+instructions given on the screen.
+
+##Compilation
+
+If you are interested in building the packages yourself, you can do so freely at any given time. The project
+uses CMake for building purposes, for easier access to compiler tools and options.
+
+Ensure that you have all of the necessary packages to build the packages:
+
+* CMake >= 3.18.4;
+* make >= 4.3;
+* ncurses >= 6.2.
+
+To install those packages on GNU/Linux distributions, see the following:
+
+* Debian/Ubuntu: `apt install build-essential cmake libncurses-dev`;
+* Fedora: `dnf groupinstall "C Development Tools and Libraries" && dnf install cmake ncurses-devel`.
+
+The following instructions are applicable only to the GNU/Linux platform. Keep that in mind for the remainder of
+this chapter.
+
+To build a package, create a dedicated build directory that will host all of the building-related configurations.
+Move to the aforementioned directory and execute the following command: `cmake ..`. If all of the requirements
+are fulfilled, you should be able to begin the compilation process by executing `make` command in the build
+directory. The binary files should appear shortly in the current directory after issuing the previous command.
+
+##License
+
+Outor is released under the GNU General Public License v3. Please read LICENSE for further details regarding the
+license.

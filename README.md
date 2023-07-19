@@ -1,11 +1,11 @@
-#Outor
+# Outor
 
-##What is Outor?
+## What is Outor?
 
 Outor is a terminal-based ultimate outfit advisor and temperature converter made for fun. It's intended to be
 used in situations where advise is needed on what to wear during specific weather conditions.
 
-##How to use it?
+## How to use it?
 
 To use this program, proceed to the following platform-specific instructions:
 
@@ -17,7 +17,7 @@ main menu options (look at the leading letters for a hint). Follow the instructi
 any key which corresponds to one of the main menu options (look at the leading letters for a hint). Follow the
 instructions given on the screen.
 
-##Compilation
+## Compilation
 
 If you are interested in building the packages yourself, you can do so freely at any given time. The project
 uses CMake for building purposes, for easier access to compiler tools and options.
@@ -41,7 +41,7 @@ Move to the aforementioned directory and execute the following command: `cmake .
 are fulfilled, you should be able to begin the compilation process by executing `make` command in the build
 directory. The binary files should appear shortly in the current directory after issuing the previous command.
 
-##License
+## License
 
 Outor is released under the GNU General Public License v3. Please read LICENSE for further details regarding the
 license.
